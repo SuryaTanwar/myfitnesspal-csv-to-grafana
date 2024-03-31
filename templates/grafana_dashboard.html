@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MyFitnessPal Dashboard</title>
+<style>
+iframe {
+  width: 100%;   /* Occupy full width */
+  height: 300px; /* Adjust height as needed */
+  border: none;
+}
+</style>
+</head>
+<body>
+<h1>MyFitnessPal Dashboard</h1> 
+
+<iframe id="id1" src="{{ url_for('grafana_iframe', panel_id=1) }}"></iframe> 
+
+<iframe id="id2" src="{{ url_for('grafana_iframe', panel_id=2) }}"></iframe> 
+
+<iframe id="bottom-iframe" src="{{ url_for('grafana_iframe', panel_id=3) }}"></iframe> 
+</body>
+</html>

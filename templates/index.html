@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyFitnessPal Data Upload</title>
+    <style> 
+        body {
+          font-family: 'Open Sans', sans-serif; 
+          margin: 30px; 
+          background-color: #222831; 
+          color: #eeeeee;  
+        }
+
+        .container { 
+          width: 60%; 
+          margin: 0 auto; 
+          padding: 30px; 
+          border: 1px solid #393e46; 
+          border-radius: 8px; 
+          box-shadow: 0 3px 8px rgba(0,0,0,0.3); 
+          background-color: #30363d; 
+          position: absolute; 
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); 
+        }
+
+        input[type="submit"] {
+          background-color: #007bff; 
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+       .messages .success {
+         color: green; 
+       }
+
+       .messages .error {
+         color: red; 
+       } 
+    </style> 
+</head>
+<body>
+    <div class="container"> 
+        <h1>Upload your MyFitnessPal CSV</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ 'success' if 'success' in message else 'error' }}">{{ message }}</li> 
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="/" enctype="multipart/form-data">
+            <label for="file">Choose a CSV file:</label>
+            <input type="file" name="file" id="file" accept=".csv">
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+</body>
+</html>
